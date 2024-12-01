@@ -1,0 +1,6 @@
+@kooudleserv_HostAddress = http://localhost:5112
+
+GET {{kooudleserv_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
