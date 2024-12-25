@@ -41,12 +41,12 @@ public class Accountcontroller:Controller{
 
    }
 
-   [Authorize]
+ 
    [Route("test")]
    [HttpGet]
    public ActionResult test(){
     
-    return Ok("tested");
+    return Ok(Db.ReadItems());
 
    }
 

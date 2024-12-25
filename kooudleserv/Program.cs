@@ -10,6 +10,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
                         opt.LoginPath = "/";
                         opt.Cookie.Name = "kooudle";
                      });
+                     
+                    //  .AddOAuth("", pro=>{
+                    //     pro.ClaimsIssuer = "";
+                    //  });
                 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
