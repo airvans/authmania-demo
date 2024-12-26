@@ -9,8 +9,8 @@ public class Oauthcontroller:Controller{
         
         await Task.CompletedTask;
         return Redirect(string.Empty);
-
-   }
+        
+    }
   
     [HttpPost("token")]
     public async Task<ActionResult<string>> Token(){
@@ -19,5 +19,13 @@ public class Oauthcontroller:Controller{
         return Redirect(string.Empty);
 
     }
+
+  
+   [HttpGet("test")]
+   public ActionResult test(){
+    
+    return Ok(Db.ReadItems());
+
+   }
 
 }
