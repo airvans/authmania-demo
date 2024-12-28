@@ -1,18 +1,24 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 public class Accountcontroller:Controller{
 
    [Route("sign-in")]
    [HttpGet]
-   public ActionResult login(string? RetunUrl = null){
+   public ActionResult login(string email,string password, string? RetunUrl = null){
+
+    var user = UserDb.Getobject(email,password);
+
+    if(user == null){
+        return BadRequest("user doesnt exist");
+    }
     
     List<Claim> claim = new(){
-        new Claim(ClaimTypes.Name,"evan"),
-        new Claim(ClaimTypes.NameIdentifier,Guid.NewGuid().ToString())
+        new Claim(ClaimTypes.NameIdentifier,Guid.NewGuid().ToString()),
+        new Claim(ClaimTypes.Name,user.username),
+        new Claim(ClaimTypes.Email,user.email)
     };
     var claimid = new ClaimsIdentity(claim,CookieAuthenticationDefaults.AuthenticationScheme){};
 
@@ -24,8 +30,10 @@ public class Accountcontroller:Controller{
 
 
    [Route("register")]
-   [HttpGet]
-   public ActionResult register(){
+   [HttpPost]
+   public ActionResult register(User user){
+
+    UserDb.AddItem(user);
     
     return Ok("registered");
 
@@ -46,7 +54,7 @@ public class Accountcontroller:Controller{
    [HttpGet]
    public ActionResult test(){
     
-    return Ok(Db.ReadItems());
+    return Ok(UserDb.ReadItems());
 
    }
 
