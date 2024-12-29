@@ -3,17 +3,23 @@ using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                      .AddCookie(opt=>{
-                        opt.LoginPath = "/";
+                        opt.LoginPath = "/sign-in";
                         opt.Cookie.Name = "kooudle";
+                     }).AddOAuth("custom",opt=>{
+                        
+                        opt.SignInScheme = "cookie";
+                        opt.ClientId = "8cba3ce6-5ad9-460e-82a8-c1268909de60";
+                        opt.ClientSecret = "hell0";
+                        opt.AuthorizationEndpoint = "/oauth/authorize";
+                        opt.TokenEndpoint = "/oauth/token";
+                        opt.CallbackPath = "/callback.test";
+                                     
                      });
                      
-                    //  .AddOAuth("", pro=>{
-                    //     pro.ClaimsIssuer = "";
-                    //  });
+                  
                 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

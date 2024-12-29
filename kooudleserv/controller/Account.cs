@@ -23,6 +23,12 @@ public class Accountcontroller:Controller{
     var claimid = new ClaimsIdentity(claim,CookieAuthenticationDefaults.AuthenticationScheme){};
 
     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(claimid));
+
+    if(RetunUrl != null){
+
+        return Redirect(RetunUrl);
+        
+    }
    
     return Ok("logged-in");
 
@@ -55,6 +61,16 @@ public class Accountcontroller:Controller{
    public ActionResult test(){
     
     return Ok(UserDb.ReadItems());
+
+   }
+
+   [Route("gettoken")]
+   [HttpGet]
+   public ActionResult token(){
+    
+    var token = HttpContext.GetTokenAsync("cookie","access_token");
+
+    return Ok(token);
 
    }
 

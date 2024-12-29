@@ -25,5 +25,14 @@ public class Clientscontroller:Controller{
 
     }
 
+     [HttpGet("getallclient")]
+    public IActionResult nextall(){
+
+      var hello = Clidb.allclient();
+      
+      return Ok(hello);
+
+    }
+
 
 }
