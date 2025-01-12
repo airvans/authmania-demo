@@ -9,14 +9,14 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
                         opt.LoginPath = "/sign-in";
                         opt.Cookie.Name = "kooudle";
                      }).AddOAuth("custom",opt=>{
-                        
-                        opt.SignInScheme = "cookie";
-                        opt.ClientId = "8cba3ce6-5ad9-460e-82a8-c1268909de60";
+                        opt.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                        opt.ClientId = "8cba3ce6";
                         opt.ClientSecret = "hell0";
-                        opt.AuthorizationEndpoint = "/oauth/authorize";
-                        opt.TokenEndpoint = "/oauth/token";
-                        opt.CallbackPath = "/callback.test";
-                                     
+                        opt.AuthorizationEndpoint = "http://localhost:5112/oauth/authorize";
+                        opt.TokenEndpoint = "http://localhost:5112/oauth/token";
+                        opt.CallbackPath = "/callback-test";    
+                        opt.SaveTokens = true;
+                                                    
                      });
                      
                   

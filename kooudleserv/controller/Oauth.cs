@@ -30,22 +30,25 @@ public class Oauthcontroller:Controller{
 
         redirectUri.Query = query.ToString();
 
-        return Redirect(redirectUri.Query);
+        return Redirect(redirectUri.ToString());
         
     }
     
-    [Authorize]
+
     [HttpPost("token")]
     public async Task<ActionResult<string>> Token([FromForm] TokenRequest request){
+        
+         Console.WriteLine("someone came here");
 
         var response = new
         {
-            access_token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()),
-            expires_in = 3600,
-            token_type = "Bearer",
-            refresh_token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()),
-            scope = string.Join(" ", Array.Empty<string>())
-        };
+        access_token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()),
+        token_type = "Bearer",
+        expires_in = 3600,
+        refresh_token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()),
+        scope = "read write"
+       };
+        
         
         return Ok(response);
 

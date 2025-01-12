@@ -7,7 +7,9 @@ public class Accountcontroller:Controller{
 
    [Route("sign-in")]
    [HttpGet]
-   public ActionResult login(string email,string password, string? RetunUrl = null){
+   public ActionResult login(string email,string password){
+
+    string? RetunUrl = HttpContext.Request.Query["ReturnUrl"];
 
     var user = UserDb.Getobject(email,password);
 
@@ -27,7 +29,7 @@ public class Accountcontroller:Controller{
     if(RetunUrl != null){
 
         return Redirect(RetunUrl);
-        
+
     }
    
     return Ok("logged-in");
@@ -66,13 +68,27 @@ public class Accountcontroller:Controller{
 
    [Route("gettoken")]
    [HttpGet]
-   public ActionResult token(){
+   public async Task<ActionResult> token(){
     
-    var token = HttpContext.GetTokenAsync("cookie","access_token");
+     var token = await HttpContext.GetTokenAsync("custom","access_token");
+     var token2 = await HttpContext.GetTokenAsync(CookieAuthenticationDefaults.AuthenticationScheme,"access_token");
 
-    return Ok(token);
+     return Ok(new{welcome = "shithead",token,token2});
 
    }
+
+   [Route("getuser")]
+   [HttpGet]
+   public ActionResult getusertest(){
+    
+    var name = User.FindFirstValue(ClaimTypes.Name);
+    var email = User.FindFirstValue(ClaimTypes.Email);
+
+    return Ok(new{elseits = "bullshit",name,email});
+
+   }
+
+
 
 
 
