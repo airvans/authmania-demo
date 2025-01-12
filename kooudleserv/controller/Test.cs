@@ -15,7 +15,7 @@ public class Testcontroller:Controller{
 
    }
 
-   [HttpGet("callback.test")]
+   [HttpGet("/callback-test")]
    public ActionResult callback(){
  
     return Ok();

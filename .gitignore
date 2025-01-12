@@ -12,6 +12,9 @@
 
 kooudleserv/herenow.txt
 kooudleserv/clientnow.txt
+kooudleserv/experimental/templatedb.cs
+kooudleserv/experimental/userdb.cs
+kooudleserv/experimental/clienttemp.cs
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
