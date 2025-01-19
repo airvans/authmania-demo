@@ -16,16 +16,16 @@ public class Oidccontoller:Controller{
     }
 
    [HttpGet("authorize")]
-   public async Task<IActionResult> Authorize(){
+   public IActionResult Authorize(){
         
     return Redirect(string.Empty);
 
    }
   
     [HttpPost("token")]
-    public async Task<ActionResult<string>> Token(){
+    public ActionResult Token(){
 
-    return Redirect(string.Empty);
+      return Redirect(string.Empty);
 
     }
 

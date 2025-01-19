@@ -16,7 +16,7 @@ public class Oauthcontroller:Controller{
    
    [Authorize]
    [HttpGet("authorize")]
-   public async Task<IActionResult> Authorize([FromQuery] AuthorizeRequest request){
+   public IActionResult Authorize([FromQuery] AuthorizeRequest request){
         
         Client? client = Clidb.findclient(request.ClientId);
 
@@ -44,7 +44,7 @@ public class Oauthcontroller:Controller{
     
 
     [HttpPost("token")]
-    public async Task<ActionResult<string>> Token([FromForm] TokenRequest request){
+    public ActionResult Token([FromForm] TokenRequest request){
         
          Console.WriteLine("someone came here");
 
