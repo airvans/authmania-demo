@@ -4,6 +4,22 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 public class Accountcontroller:Controller{
+    
+    [Route("login")]
+    [HttpGet]
+    public ActionResult viewlogin(){
+
+        return View("login");
+
+    }
+
+    [Route("register")]
+    [HttpGet]
+    public ActionResult viewregister(){
+
+        return View("register");
+
+    }
 
    [Route("sign-in")]
    [HttpGet]
