@@ -13,7 +13,7 @@ public class Accountcontroller:Controller{
 
     }
 
-    [Route("register")]
+    [Route("registerview")]
     [HttpGet]
     public ActionResult viewregister(){
 
@@ -54,7 +54,7 @@ public class Accountcontroller:Controller{
 
 
    [Route("register")]
-   [HttpPost]
+   [HttpGet]
    public ActionResult register(User user){
 
     UserDb.AddItem(user);

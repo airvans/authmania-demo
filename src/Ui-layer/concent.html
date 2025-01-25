@@ -35,4 +35,27 @@
         <h5 style="text-align: center;"><a href="signup.html">cancel</a></h5>
     </div>
 </body>
+<script>
+
+const button = document.querySelector(".enter-click")
+const base = "http://localhost:5112"
+
+
+button.addEventListener("click",consent) 
+
+function consent(){
+
+    const query = window.location.search
+    const base = 'http://localhost:5112'
+
+    const url = new URL("/oauth/authorize",base)
+
+    url.href = url.href + query
+
+    window.location = url 
+
+}
+
+
+</script>
 </html>
