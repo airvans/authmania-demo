@@ -39,11 +39,51 @@ body{
 <div class="main">
     <h3 style="text-align: center;">Sign-in</h3>
     <span>username</span>
-    <input class="enter-text" type="text">
+    <input id="username" class="enter-text" type="text">
     <span>password</span>
-    <input class="enter-text" type="text">
+    <input id="password" class="enter-text" type="text">
     <button class="enter-click" >click me </button>
-    <h5 style="text-align: center;"><a href="register">Sign-up</a></h5>
+    <h5 style="text-align: center;"><a href="signup.html">Sign-up</a></h5>
 </div>
 </body>
+<script>
+const button = document.querySelector(".enter-click")
+const base = "http://localhost:5112"
+const base_host = "sign-in"
+
+button.addEventListener("click",login) 
+
+
+
+function login(){
+
+    const username = document.querySelector("#username").value
+    const password = document.querySelector("#password").value
+
+    const url = new URL(base_host,base)
+    url.searchParams.append("email",username)
+    url.searchParams.append("password",password)
+
+    appendreturnurl(url)
+
+    window.location = url
+
+    //console.log(url)
+
+}
+
+function appendreturnurl(location){
+   
+    let url = new URL(window.location)
+    const item = url.searchParams.get("ReturnUrl")
+
+    if( item != null){
+
+        location.searchParams.append("ReturnUrl",item)
+
+    }
+
+}
+
+</script>
 </html>

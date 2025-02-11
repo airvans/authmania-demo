@@ -16,13 +16,37 @@
     <div class="main">
         <h3 style="text-align: center;">Sign-up</h3>
         <span>username</span>
-        <input class="enter-text" type="text">
+        <input id="username" class="enter-text" type="text">
         <span>email</span>
-        <input class="enter-text" type="text">
+        <input id="email" class="enter-text" type="text">
         <span>password</span>
-        <input class="enter-text" type="text">
+        <input id="password" class="enter-text" type="text">
         <button class="enter-click" >click me </button>
-        <h5 style="text-align: center;">Alread have an account? <a href="login">Sign-in</a></h5>
+        <h5 style="text-align: center;">Alread have an account? <a href="index.html">Sign-in</a></h5>
     </div> 
 </body>
+<script>
+const button = document.querySelector(".enter-click")
+const base = "http://localhost:5112"
+const base_host = "register"
+
+button.addEventListener("click",signin)
+
+function signin(){
+
+    const username = document.querySelector("#username").value
+    const email = document.querySelector("#password").value
+    const password = document.querySelector("#password").value
+
+    const url = new URL(base_host,base)
+    url.searchParams.append("email",username)
+    url.searchParams.append("password",password)
+    url.searchParams.append("username",password)
+
+
+    window.location = url
+
+}
+
+</script>
 </html>
