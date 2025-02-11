@@ -15,6 +15,17 @@ public class Testcontroller:Controller{
 
    }
 
+    [HttpGet("oidc.test")]
+   public ActionResult test2(){
+
+    var auth =new AuthenticationProperties{
+        RedirectUri = "/"
+    };
+    
+    return Challenge(auth,authenticationSchemes:"custom");
+
+   }
+
    [HttpGet("/callback-test")]
    public ActionResult callback(){
  

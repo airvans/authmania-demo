@@ -6,15 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 [Route("oauth")]
 public class Oauthcontroller:Controller{
 
+    [Authorize]
+    [HttpGet("oauthcocsent")]
+    public ActionResult viewregister(){
 
-    // [HttpGet("oauthcocsent")]
-    // public ActionResult viewregister(){
+     return View("consentview");
 
-    //  return View("consentview");
-
-    // }
+    }
    
-   [Authorize]
    [HttpGet("authorize")]
    public IActionResult Authorize([FromQuery] AuthorizeRequest request){
         

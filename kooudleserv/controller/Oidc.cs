@@ -1,7 +1,16 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [Route("oidc")]
 public class Oidccontoller:Controller{
+
+    [Authorize]
+    [HttpGet("oidccocsent")]
+    public ActionResult viewregister(){
+
+     return View("consentviewoidc");
+
+    }
 
     [Route(".well-known/openid-configuration")]
     [HttpGet]
