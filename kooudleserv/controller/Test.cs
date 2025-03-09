@@ -22,7 +22,7 @@ public class Testcontroller:Controller{
         RedirectUri = "/"
     };
     
-    return Challenge(auth,authenticationSchemes:"custom");
+    return Challenge(auth,authenticationSchemes:"next");
 
    }
 

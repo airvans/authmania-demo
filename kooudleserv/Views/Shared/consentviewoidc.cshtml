@@ -48,7 +48,7 @@ function consent(){
     const query = window.location.search
     const base = 'http://localhost:5112'
 
-    const url = new URL("/oauth/authorize",base)
+    const url = new URL("/oidc/authorize",base)
 
     url.href = url.href + query
 

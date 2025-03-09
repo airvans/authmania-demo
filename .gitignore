@@ -402,3 +402,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.idea/.idea.kooudle/.idea/.gitignore
+.idea/.idea.kooudle/.idea/.name
+.idea/.idea.kooudle/.idea/encodings.xml
+.idea/.idea.kooudle/.idea/indexLayout.xml
+.idea/.idea.kooudle/.idea/vcs.xml

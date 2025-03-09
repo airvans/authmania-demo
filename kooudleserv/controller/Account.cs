@@ -87,9 +87,10 @@ public class Accountcontroller:Controller{
    public async Task<ActionResult> token(){
     
      var token = await HttpContext.GetTokenAsync("custom","access_token");
-     var token2 = await HttpContext.GetTokenAsync(CookieAuthenticationDefaults.AuthenticationScheme,"access_token");
+     var token2 = await HttpContext.GetTokenAsync("next","access_token");
+     var token3 = await HttpContext.GetTokenAsync(CookieAuthenticationDefaults.AuthenticationScheme,"access_token");
 
-     return Ok(new{welcome = "shithead",token,token2});
+     return Ok(new{welcome = "shithead",token,token2,token3});
 
    }
 
@@ -99,8 +100,15 @@ public class Accountcontroller:Controller{
     
     var name = User.FindFirstValue(ClaimTypes.Name);
     var email = User.FindFirstValue(ClaimTypes.Email);
+    var userId = User.FindFirst("sub")?.Value;
 
-    return Ok(new{elseits = "bullshit",name,email});
+    var user = HttpContext.User;  
+    var userId2 = user.FindFirst("sub")?.Value;  // Get the 'sub' claim (subject)
+    var userName = user.FindFirst("name")?.Value;  // Get the 'name' claim
+    var userEmail = user.FindFirst("email")?.Value;  // Get the 'email' claim
+
+
+    return Ok(new{elseits = "bullshit",name,email,userId,userId2,userName,userEmail});
 
    }
 
